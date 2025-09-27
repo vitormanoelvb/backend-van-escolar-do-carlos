@@ -1,0 +1,157 @@
+type: collection.insomnia.rest/5.0
+name: Parada das Rotas
+meta:
+  id: wrk_b0074443c83c42a3b06eac6afb25b9e9
+  created: 1758252779573
+  modified: 1758252779573
+  description: ""
+collection:
+  - url: "{{ _[''].baseURL }}/route-stops"
+    name: Criar Parada
+    meta:
+      id: req_d3fdb47c681a4143b7880bca504dc723
+      created: 1758280533813
+      modified: 1758296852539
+      isPrivate: false
+      description: ""
+      sortKey: -1758280533813
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "routeId": 6,
+          "label": "Ponte 1",
+          "street": "Rua das Acácias",
+          "neighborhood": "Centro",
+          "latitude": -19.51731,
+          "longitude": -42.61321,
+          "orderIndex": 0
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/route-stops?routeId=6"
+    name: Listar Paradas por Rota
+    meta:
+      id: req_25404832427f4f589eae1d1ebce0a32f
+      created: 1758297280113
+      modified: 1758297425740
+      isPrivate: false
+      description: ""
+      sortKey: -1758297280113
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/route-stops/20"
+    name: Buscar Parada por ID
+    meta:
+      id: req_60275c6fc1b04bedae7e9e3b7db0e182
+      created: 1758297633506
+      modified: 1758299279058
+      isPrivate: false
+      description: ""
+      sortKey: -1758297633506
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/route-stops/20"
+    name: Atualizar Parada
+    meta:
+      id: req_e72a861f009b45468c1fb28938d5493b
+      created: 1758297884499
+      modified: 1758299296153
+      isPrivate: false
+      description: ""
+      sortKey: -1758297884499
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "label": "Ponto 1 Revisado",
+          "street": "Rua das Acácias",
+          "number": "S/N",
+          "neighborhood": "Centro",
+          "latitude": -19.51731,
+          "longitude": -42.61321,
+          "orderIndex": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/route-stops/20"
+    name: Remover Parada
+    meta:
+      id: req_a2c7369132124affba29088bbec6645e
+      created: 1758299094080
+      modified: 1758299308569
+      isPrivate: false
+      description: ""
+      sortKey: -1758299094080
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_9d5df3132d33ffcbe9e4330a6c1b6cb62138ec4d
+    created: 1758252779577
+    modified: 1758252779577
+environments:
+  name: Base Environment
+  meta:
+    id: env_9d5df3132d33ffcbe9e4330a6c1b6cb62138ec4d
+    created: 1758252779575
+    modified: 1758280651454
+    isPrivate: false
+  data:
+    "":
+      baseURL: http://localhost:3000

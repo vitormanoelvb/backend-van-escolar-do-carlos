@@ -1,0 +1,152 @@
+type: collection.insomnia.rest/5.0
+name: Chamadas
+meta:
+  id: wrk_97f463b9ca154834b26114ed93dd8e7c
+  created: 1758307819552
+  modified: 1758307819552
+  description: ""
+collection:
+  - url: "{{ _[''].baseURL }}/attendance"
+    name: Criar Chamada
+    meta:
+      id: req_19961d9a5ebb4e99bda7a5fdf5b78892
+      created: 1758308263271
+      modified: 1758325141076
+      isPrivate: false
+      description: ""
+      sortKey: -1758308263271
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "routeId": 6,
+          "studentId": 8,
+          "date": "2025-09-19",
+          "status": "PRESENT",
+          "notes": "Embarcou normalmente",
+          "markedBy": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+        id: pair_9ebf42206721404eb21b18cbc2c05c0b
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/attendance/5"
+    name: Buscar Chamada por ID
+    meta:
+      id: req_660ce2422db4475cb6f7b316f8b22f79
+      created: 1758322938676
+      modified: 1758326457055
+      isPrivate: false
+      description: ""
+      sortKey: -1758322938676
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/attendance"
+    name: Listar Chamadas
+    meta:
+      id: req_414bf779777b494eb09d9c6c56157969
+      created: 1758323046539
+      modified: 1758323080984
+      isPrivate: false
+      description: ""
+      sortKey: -1758323046539
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/attendance/5"
+    name: Atualizar Chamada
+    meta:
+      id: req_ba034a653d26443fac931a891cbcb04b
+      created: 1758324333348
+      modified: 1758326488000
+      isPrivate: false
+      description: ""
+      sortKey: -1758324333348
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "status": "ABSENT",
+          "notes": "Aluno não compareceu"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/attendance/4"
+    name: Remover Chamada
+    meta:
+      id: req_fd4e6d06eb734765803a003618071d8a
+      created: 1758324540695
+      modified: 1758326407344
+      isPrivate: false
+      description: ""
+      sortKey: -1758324540695
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_8eab636a8dd25acbd599bac7af346aa87b8e7ad7
+    created: 1758307819579
+    modified: 1758307819579
+environments:
+  name: Base Environment
+  meta:
+    id: env_8eab636a8dd25acbd599bac7af346aa87b8e7ad7
+    created: 1758307819576
+    modified: 1758308314643
+    isPrivate: false
+  data:
+    "":
+      baseURL: http://localhost:3000

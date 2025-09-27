@@ -1,0 +1,143 @@
+type: collection.insomnia.rest/5.0
+name: Autenticação de Usuário
+meta:
+  id: wrk_18475016a1034355b3d0a7611b3f30ac
+  created: 1758232237121
+  modified: 1758325377644
+  description: ""
+collection:
+  - url: "{{ _[''].baseURL }}/auth/login"
+    name: Login
+    meta:
+      id: req_9f7c0965131f455b9e1f675c30d6f4b9
+      created: 1758235883388
+      modified: 1758242755385
+      isPrivate: false
+      description: ""
+      sortKey: -1758235883388
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "carlos@empresa.com",
+          "password": "123854884848"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_c0cf50b429434508b84a780b1b03fb01
+      - name: User-Agent
+        value: insomnia/11.2.0
+        id: pair_d637f1e5eafe47b79f41b248d839dac0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/auth/me"
+    name: Eu
+    meta:
+      id: req_82b6211cffac40869637724d14fb79f6
+      created: 1758239626292
+      modified: 1758239997098
+      isPrivate: false
+      description: ""
+      sortKey: -1758239626292
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJjYXJsb3NAZW1wcmVzYS5jb20iLCJpYXQiOjE3NTgyMzkyNjgsImV4cCI6MTc1ODg0NDA2OH0.brIeItfAL7AgZWoFs7ySwSY1ZQl7QPy-e0k44_PAbuw
+      prefix: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/auth/forgot-password"
+    name: Esqueci a Senha
+    meta:
+      id: req_00d42aaffbf840499eb640ec56ca7bf2
+      created: 1758240159499
+      modified: 1758240316477
+      isPrivate: false
+      description: ""
+      sortKey: -1758240159499
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "email": "carlos@empresa.com"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+        id: pair_832c220b56264f6dbf3632c5d3b5412f
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/auth/reset-password"
+    name: Resetar Senha
+    meta:
+      id: req_e78738b5e1914761b3c2cdc61d781d8c
+      created: 1758240417544
+      modified: 1758244214185
+      isPrivate: false
+      description: ""
+      sortKey: -1758240417544
+    method: POST
+    body:
+      mimeType: application/json
+      text: >
+        {
+          "token": "1d4abda1f10f35c4ccb7083336e754c28e9e8ff772e287416d7e208709252ef6",
+          "newPassword": "495962066"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+        id: pair_7edd1aebbaac476c9a6a997b83813e8d
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_6b2c2310f6d6ec27b05c0cda5d433e5a4f9109dd
+    created: 1758232237174
+    modified: 1758232237174
+environments:
+  name: Base Environment
+  meta:
+    id: env_6b2c2310f6d6ec27b05c0cda5d433e5a4f9109dd
+    created: 1758232237133
+    modified: 1758235810826
+    isPrivate: false
+  data:
+    "":
+      baseURL: http://localhost:3000
+      accessToken: ""

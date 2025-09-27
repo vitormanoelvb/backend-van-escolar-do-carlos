@@ -1,0 +1,185 @@
+type: collection.insomnia.rest/5.0
+name: Estudantes
+meta:
+  id: wrk_4498191c8c3b45ea9f8432d2ba2cc8a2
+  created: 1758193697462
+  modified: 1758212710897
+  description: ""
+collection:
+  - url: "{{ _[''].baseURL }}/students"
+    name: Criar Alunos
+    meta:
+      id: req_5c9f42ad039a4ec0a88cb88f51818b67
+      created: 1758193697634
+      modified: 1758195559865
+      isPrivate: false
+      description: ""
+      sortKey: -1758193697634
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "fullName": "João da Silva",
+          "phone": "(33) 99999-0000",
+          "street": "Rua das Acácias",
+          "number": "142",
+          "neighborhood": "Centro",
+          "school": "Escola Estadual Univale",
+          "shift": "MANHA",
+          "age": 12,
+          "gender": "M",
+          "seatNumber": 10,
+          "active": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: bearer
+      token: JWT
+      prefix: Bearer
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/students/"
+    name: Listar Alunos
+    meta:
+      id: req_2ba11da82476401d8b929ef95263ea4e
+      created: 1758199920064
+      modified: 1758204558866
+      isPrivate: false
+      description: ""
+      sortKey: -1758199920064
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    authentication:
+      type: none
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL
+      }}/students?name=Joao&school=Univale&active=true&page=1&limit=10"
+    name: Listar Aluno por Nome e Escola
+    meta:
+      id: req_8697fa7191fb455d92db10c98656e5c3
+      created: 1758204601052
+      modified: 1758214749559
+      isPrivate: false
+      description: ""
+      sortKey: -1758204601053
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/students/8"
+    name: Buscar por ID
+    meta:
+      id: req_16bf81056cde4f7997d8662837bf6ddf
+      created: 1758205167774
+      modified: 1758212567050
+      isPrivate: false
+      description: ""
+      sortKey: -1758205167774
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/students/8"
+    name: Atualizar Aluno (Parcial)
+    meta:
+      id: req_9a906931eb7d4a6aab14241505445e45
+      created: 1758205386894
+      modified: 1758245374019
+      isPrivate: false
+      description: ""
+      sortKey: -1758205386894
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "phone": "(33) 98888-7797",
+          "age": 13
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/students/8"
+    name: Remover Aluno
+    meta:
+      id: req_412e3b046b0143bc85e8b42dab27a67e
+      created: 1758209596693
+      modified: 1758212589252
+      isPrivate: false
+      description: ""
+      sortKey: -1758209596693
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_0b22529a56fcb4be3fd06ab9452c602960ec4ca9
+    created: 1758193697465
+    modified: 1758193697465
+environments:
+  name: Base Environment
+  meta:
+    id: env_0b22529a56fcb4be3fd06ab9452c602960ec4ca9
+    created: 1758193697464
+    modified: 1758194551341
+    isPrivate: false
+  data:
+    "":
+      baseURL: http://localhost:3000
+      token: ""

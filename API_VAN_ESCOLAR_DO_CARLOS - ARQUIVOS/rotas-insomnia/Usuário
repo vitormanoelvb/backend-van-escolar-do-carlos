@@ -1,0 +1,150 @@
+type: collection.insomnia.rest/5.0
+name: Usuário
+meta:
+  id: wrk_233ba809d49b4b8991d1fb844d99666d
+  created: 1758224876347
+  modified: 1758329618528
+  description: ""
+collection:
+  - url: "{{ _[''].baseURL }}/users"
+    name: Criar Usuário
+    meta:
+      id: req_ca6428288a6c49a7af9a7d95e198030d
+      created: 1758225772938
+      modified: 1758231374645
+      isPrivate: false
+      description: ""
+      sortKey: -1758225772938
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "name": "Carlos Motorista",
+          "email": "carlos@empresa.com",
+          "passwordHash": "minha-senha-segura",
+          "role": "DRIVER"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+        id: pair_83152a203ea549fd897a741e68d5461c
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/users"
+    name: Listar Usuários
+    meta:
+      id: req_f8707c9409c2444dbd6cc338999d1f73
+      created: 1758230030877
+      modified: 1758230074171
+      isPrivate: false
+      description: ""
+      sortKey: -1758230030877
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/users/1"
+    name: Buscar Usuário por ID
+    meta:
+      id: req_cf98c3b03d3247dc8cb96246f78e7e18
+      created: 1758230249212
+      modified: 1758230343767
+      isPrivate: false
+      description: ""
+      sortKey: -1758230249212
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/users/1"
+    name: Atualizar Usuário (Parcial)
+    meta:
+      id: req_2957727623a24e6785cf2a653cc4159a
+      created: 1758230430588
+      modified: 1758230958576
+      isPrivate: false
+      description: ""
+      sortKey: -1758230430588
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "name": "Carlos M. Motorista"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+        id: pair_914670165c634dd7bddae890c0ec8a0f
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/users/1"
+    name: Remover Usuário
+    meta:
+      id: req_2c5867ef8f9b456ab19bece9c9aae407
+      created: 1758231048240
+      modified: 1758231280414
+      isPrivate: false
+      description: ""
+      sortKey: -1758231048240
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_cc0c993522e352dd31e641b43bb323169e3b4363
+    created: 1758224876384
+    modified: 1758224876384
+environments:
+  name: Base Environment
+  meta:
+    id: env_cc0c993522e352dd31e641b43bb323169e3b4363
+    created: 1758224876358
+    modified: 1758225748340
+    isPrivate: false
+  data:
+    "":
+      baseURL: http://localhost:3000

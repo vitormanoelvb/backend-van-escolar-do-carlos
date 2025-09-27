@@ -1,0 +1,237 @@
+type: collection.insomnia.rest/5.0
+name: Rotas
+meta:
+  id: wrk_fa2b7e4fcf00498aaa1e2a50e73cd6ac
+  created: 1758245675811
+  modified: 1758245675811
+  description: ""
+collection:
+  - url: "{{ _[''].baseURL }}/routes"
+    name: Criar Rota
+    meta:
+      id: req_76d9504c436c487b8333434f30df7fc1
+      created: 1758246370000
+      modified: 1758296813672
+      isPrivate: false
+      description: ""
+      sortKey: -1758246370000
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        { 
+          "name": "Rota Manhã – Bairro Central",
+          "stops": [
+            {
+              "label": "Ponto 1",
+              "street": "Rua das Acácias",
+              "neighborhood": "Centro",
+              "latitude": -19.51731,
+              "longitude": -42.61321,
+              "orderIndex": 0
+            },
+            {
+              "label": "Ponto 2",
+              "street": "Av. Principal",
+              "neighborhood": "Centro",
+              "latitude": -19.51801,
+              "longitude": -42.61277,
+              "orderIndex": 1
+            }
+          ]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+        id: pair_d9673712199e4512947d7abbfd05fee6
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/routes"
+    name: Listar Rotas
+    meta:
+      id: req_50ffa016d49549b8817753a4f136ad19
+      created: 1758246699829
+      modified: 1758247672911
+      isPrivate: false
+      description: ""
+      sortKey: -1758246699829
+    method: GET
+    parameters:
+      - id: pair_31c4543362f648b09d0676b52da71415
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/routes/5"
+    name: Buscar Rota por ID
+    meta:
+      id: req_543b5cc78d3641aabc98f4fb3870aff5
+      created: 1758246844394
+      modified: 1758279165802
+      isPrivate: false
+      description: ""
+      sortKey: -1758246844394
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/routes?name=Manhã&page=1&limit=10"
+    name: Listar Rotas (com filtros/paginação)
+    meta:
+      id: req_b540b469802d46ba9f93b593317f6625
+      created: 1758247696015
+      modified: 1758247821322
+      isPrivate: false
+      description: ""
+      sortKey: -1758247696015
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/routes/6"
+    name: Atualizar Rota (Parcial)
+    meta:
+      id: req_d08f50be13874e48ba0bfeca29708cbb
+      created: 1758248060101
+      modified: 1758296748901
+      isPrivate: false
+      description: ""
+      sortKey: -1758248060101
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |+
+        {
+          "name": "Rota Manhã – Linha 1",
+          "stops": [
+            {
+              "id": 10,
+              "label": "Ponto 1 (revisto)",
+              "orderIndex": 0
+            },
+            {
+              "label": "Novo Ponto",
+              "street": "Rua das Flores",
+              "neighborhood": "Jardim",
+              "latitude": -19.52001,
+              "longitude": -42.61010,
+              "orderIndex": 2
+            }
+          ]
+        }
+
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+        id: pair_f0f10b53a7bb4aa1a80339375a295b7a
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/routes/6"
+    name: Remove Rota
+    meta:
+      id: req_7a8f2c91a9c94b36950360f5de4ef16c
+      created: 1758250700506
+      modified: 1758296777890
+      isPrivate: false
+      description: ""
+      sortKey: -1758279491996
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/routes/6"
+    name: Atribuir Motorista à Rota
+    meta:
+      id: req_3264e5e83e1b4592a2486c3e2553054d
+      created: 1758279491895
+      modified: 1758296758423
+      isPrivate: false
+      description: ""
+      sortKey: -1758279491896
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "driverId": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7a1ed2d2cc7a90c08e733b5941ae34328611e499
+    created: 1758245675830
+    modified: 1758245675830
+environments:
+  name: Base Environment
+  meta:
+    id: env_7a1ed2d2cc7a90c08e733b5941ae34328611e499
+    created: 1758245675828
+    modified: 1758246412265
+    isPrivate: false
+  data:
+    "":
+      baseURL: http://localhost:3000

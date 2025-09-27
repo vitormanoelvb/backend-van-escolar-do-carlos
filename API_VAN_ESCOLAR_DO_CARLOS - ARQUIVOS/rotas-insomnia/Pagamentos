@@ -1,0 +1,176 @@
+type: collection.insomnia.rest/5.0
+name: Pagamentos
+meta:
+  id: wrk_1978dd113af44f2794ab5bcb580e018c
+  created: 1758212845482
+  modified: 1758212845482
+  description: ""
+collection:
+  - url: "{{ _[''].baseURL }}/payments"
+    name: Criar Pagamento
+    meta:
+      id: req_8b99ff351ba549febf7df3e5dc3b9e49
+      created: 1758212850117
+      modified: 1758214171774
+      isPrivate: false
+      description: ""
+      sortKey: -1758212850117
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "studentId": 8,
+          "amount": 120.50,
+          "dueDate": "2025-09-30",
+          "status": "OPEN",
+          "method": "PIX",
+          "paidAt": null,
+          "notes": "Mensalidade de setembro"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/payments?month=2025-09&status=OPEN&studentId=8"
+    name: Listar Pagamentos por Filtro
+    meta:
+      id: req_895dd545cab24ddaa8fd179caa757125
+      created: 1758214506114
+      modified: 1758214728324
+      isPrivate: false
+      description: ""
+      sortKey: -1758214506114
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/payments/2"
+    name: Buscar Pagamento por ID
+    meta:
+      id: req_f96cbaa263684161be5930e60ef14ede
+      created: 1758214788372
+      modified: 1758215546136
+      isPrivate: false
+      description: ""
+      sortKey: -1758214788372
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/payments"
+    name: Listar Todos os Pagamentos
+    meta:
+      id: req_80bced428ec34df9a6f9de6419cea9ff
+      created: 1758214863810
+      modified: 1758214922144
+      isPrivate: false
+      description: ""
+      sortKey: -1758214863810
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/payments/2"
+    name: Atualizar Pagamento (parcial)
+    meta:
+      id: req_03398054e21b447eb1cd98b3559aa7b5
+      created: 1758214995260
+      modified: 1758215553177
+      isPrivate: false
+      description: ""
+      sortKey: -1758214995260
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "status": "PAID",
+          "paidAt": "2025-09-18T13:40:00.000Z",
+          "method": "PIX",
+          "notes": "Pago via PIX"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].baseURL }}/payments/2"
+    name: Remover Pagamento
+    meta:
+      id: req_fff577cb8f7e4e7fa6235244b4347d0b
+      created: 1758215308588
+      modified: 1758215561940
+      isPrivate: false
+      description: ""
+      sortKey: -1758215308588
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_ee9c34963b31aab5f73dfdc4e14ba90ddfa222a4
+    created: 1758212845520
+    modified: 1758212845520
+environments:
+  name: Base Environment
+  meta:
+    id: env_ee9c34963b31aab5f73dfdc4e14ba90ddfa222a4
+    created: 1758212845503
+    modified: 1758213960377
+    isPrivate: false
+  data:
+    "":
+      baseURL: http://localhost:3000
+      token: ""
