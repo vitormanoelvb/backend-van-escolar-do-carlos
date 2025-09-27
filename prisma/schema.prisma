@@ -1,0 +1,159 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  DRIVER
+  ADMIN
+}
+
+enum Shift {
+  MANHA
+  TARDE
+  NOITE
+  INTEGRAL
+}
+
+enum Gender {
+  M
+  F
+  OUTRO
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  JUSTIFIED
+}
+
+enum PaymentStatus {
+  OPEN
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  PIX
+  CARD
+  TRANSFER
+  OTHER
+}
+
+model User {
+  id           BigInt    @id @default(autoincrement())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(DRIVER)
+  resetToken   String?
+  resetExpires DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  routes Route[] @relation("UserRoutes")
+
+  markedAttendances Attendance[] @relation("MarkedBy")
+}
+
+model Student {
+  id           BigInt   @id @default(autoincrement())
+  fullName     String
+  phone        String?
+  street       String?
+  number       String?
+  neighborhood String?
+  school       String?
+  shift        Shift?
+  age          Int?
+  gender       Gender?
+  seatNumber   Int?
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  payments   Payment[]
+  attendance Attendance[]
+
+  @@index([fullName])
+  @@index([school])
+}
+
+model Route {
+  id        BigInt   @id @default(autoincrement())
+  name      String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  driverId BigInt?
+  driver   User?   @relation("UserRoutes", fields: [driverId], references: [id])
+
+  stops RouteStop[]
+  calls Attendance[]
+}
+
+model RouteStop {
+  id           BigInt   @id @default(autoincrement())
+  routeId      BigInt
+  label        String?
+  street       String?
+  number       String?
+  neighborhood String?
+  latitude     Decimal?
+  longitude    Decimal?
+  orderIndex   Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  route Route @relation(fields: [routeId], references: [id])
+
+  @@index([routeId, orderIndex])
+  @@unique([routeId, orderIndex])
+}
+
+model Attendance {
+  id        BigInt           @id @default(autoincrement())
+  dateRef   DateTime         @db.Date
+  routeId   BigInt
+  studentId BigInt
+  status    AttendanceStatus @default(PRESENT)
+  notes     String?
+  markedBy  BigInt? 
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  route   Route   @relation(fields: [routeId], references: [id])
+  student Student @relation(fields: [studentId], references: [id])
+
+  user User? @relation("MarkedBy", fields: [markedBy], references: [id])
+
+  @@unique([dateRef, routeId, studentId])
+  @@index([routeId, dateRef])
+}
+
+model Payment {
+  id        BigInt         @id @default(autoincrement())
+  studentId BigInt
+  amount    Decimal        @db.Decimal(10, 2)
+  dueDate   DateTime       @db.Date
+  status    PaymentStatus  @default(OPEN)
+  method    PaymentMethod?
+  paidAt    DateTime?
+  notes     String?
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@index([studentId])
+  @@index([dueDate, status])
+}
