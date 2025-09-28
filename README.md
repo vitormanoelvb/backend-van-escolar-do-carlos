@@ -1,3 +1,116 @@
+<h1 align="center">🚐 VanGo Carlos — Backend API 📑</h1>
+
+Projeto final da disciplina de **Desenvolvimento Web (Backend)**, desenvolvido para atender às necessidades de gestão de transporte escolar do empresário fictício **Sr. Lucas Matos**.  
+
+O sistema foi construído em **Node.js (NestJS + Prisma + MySQL)**, com arquitetura modular, boas práticas de validação e autenticação, e integração com Insomnia para documentação interativa das rotas.  
+
+---
+
+## 🚀 Funcionalidades Principais
+
+### 🔹 Alunos (/students)
+- CRUD completo.  
+- Filtros avançados por nome, escola, status e poltrona.  
+- **Regra crítica:** apenas um aluno ativo por poltrona.  
+
+### 🔹 Pagamentos (/payments)
+- CRUD completo de mensalidades.  
+- Filtros por mês (YYYY-MM), status (aberto, pago, atrasado) e aluno.  
+- Relacionamento direto com estudantes (1:N).  
+- Paginação otimizada para consultas.  
+
+### 🔹 Chamadas (/attendance)
+- Registro eficiente de presença por **data + rota + aluno**.  
+- **Chave composta** evita duplicidade de chamadas no mesmo dia.  
+
+### 🔹 Rotas (/routes) e Paradas (/route-stops)
+- Cadastro de rotas escolares.  
+- Associação de motoristas via PATCH.  
+- Paradas vinculadas com validação de `orderIndex` único por rota.  
+
+### 🔹 Usuários (/users) e Autenticação (/auth)
+- Cadastro e gestão de usuários administrativos.  
+- Senhas criptografadas com **bcrypt**.  
+- Login com **JWT**, consulta de perfil autenticado (`/me`).  
+- Fluxo de recuperação de senha seguro (`/forgot-password` + `/reset-password`).  
+
+---
+
+## 🛠️ Arquitetura e Banco de Dados
+
+- **Framework:** NestJS (arquitetura modular, princípios SOLID).  
+- **ORM:** Prisma ORM com migrations automáticas.  
+- **Banco:** MySQL 8+ com índices e chaves compostas.  
+- **Relacionamentos:**
+  - 1:N → Estudante → Pagamentos  
+  - 1:N → Estudante → Chamadas  
+  - 1:N → Rota → Paradas  
+  - 1:1 → Rota → Motorista  
+
+**Destaques técnicos:**  
+- Índices únicos em poltronas de alunos ativos.  
+- Índices únicos em `orderIndex` de paradas.  
+- Chaves compostas em chamadas (integridade garantida).  
+
+---
+
+## 🖥️ Guia de Execução
+
+### 🔧 Pré-requisitos
+- Node.js 20+  
+- MySQL 8+  
+- NPM ou Yarn  
+
+### ▶️ Passos para rodar
+```bash
+# Clonar o repositório
+git clone https://github.com/vitormanoelvb/backend-van-escolar-do-carlos.git
+cd backend-van-escolar-do-carlos
+
+# Instalar dependências
+npm install
+
+# Configurar variáveis de ambiente
+# Criar arquivo .env na raiz:
+DATABASE_URL="mysql://usuario:senha@localhost:3306/van_escolar"
+JWT_SECRET="sua_chave_jwt"
+JWT_EXPIRES="7d"
+
+# Rodar migrations
+npx prisma migrate dev
+
+# Executar servidor
+npm run start:dev
+
+# Acessar API
+http://localhost:3000
+```
+
+---
+
+## 📑 Documentação e Recursos
+
+- **Insomnia Collections** exportadas para todas as entidades.  
+- **Mensagens:** em português para usuários finais.  
+- **Rotas:** em inglês (simulação de outsourcing de empresa americana).  
+- **Repositório Oficial:** [VanGo Carlos - Backend](https://github.com/vitormanoelvb/backend-van-escolar-do-carlos/tree/main)  
+
+---
+
+## 👨‍💻 Autoria e Créditos
+
+- **Desenvolvedores:**  
+  - Jonathan Weverton Rodrigues Batista  
+  - José Pedro Fernandes Pereira Abreu  
+  - Vinícius Soares Ferreira  
+  - Vitor Manoel Vidal Braz  
+
+- **Instituição:** Univale — Universidade Vale do Rio Doce  
+- **Empresa fictícia contratada:** JJVV Systems (outsourcing americano)  
+- **Cliente final:** Sr. Lucas Matos — VanGo Carlos  
+
+---
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
